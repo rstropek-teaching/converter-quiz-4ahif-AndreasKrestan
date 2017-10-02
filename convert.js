@@ -1,4 +1,6 @@
 if(process.argv.length != 6){
+  // Consider changing the error message to the error message from the specification. This would turn
+  // many tests to green.
   console.log("WARNING: PARAMETERS INVALID!");
   process.exit(1);
 }else if(!parseFloat(process.argv[2])){    
@@ -13,6 +15,7 @@ if(!checkParameters(process.argv[3], process.argv[5])){
 }else{
     const val1 = parseFloat(process.argv[2]);
     const val2 = convert(process.argv[3], process.argv[5], process.argv[2]);
+    // Tip for future exercises: Follow the specification exactly to turn automated tests green.
     console.log(val1 +" "+process.argv[3]+ " are equal to "+ val2+ " "+process.argv[5] );
 }
 
@@ -30,6 +33,9 @@ function convert(par1, par2, val){
     }else if(par1 === "cm"){
         switch(par2){
             case "m":
+                // Remember the rule: Don't repeat yourself
+                // The logic to convert m <-> cm is contained twice in your code. You could store the conversion
+                // factor (e.g. 100) once and only change the operator (* or /) depending on the conversion direction.
                 val = val/100;
                 break;
             case "mm":
